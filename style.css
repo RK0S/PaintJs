@@ -30,7 +30,8 @@ body {
 }
 
 .controls__btns button {
-    padding: 7px 33px;
+    width: 150px;
+    padding: 7px 0;
     background: white;
     text-align: center;
     border-radius: 5px;
@@ -65,4 +66,8 @@ body {
 
 .controls__range {
     margin-bottom: 30px;
+}
+
+.controls__range input{
+    cursor: pointer;
 }
