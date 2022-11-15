@@ -4,6 +4,7 @@ const colors = document.getElementsByClassName('jsColor');
 const range = document.getElementById('jsRange');
 const mode = document.getElementById('jsMode');
 const saveBtn = document.getElementById('jsSave');
+const colorPicker = new iro.ColorPicker('#picker');
 
 const initialColor = '#2c2c2c';
 const canvasSize = 700;
@@ -52,6 +53,7 @@ function changeColor(event) {
     let color = event.target.style.backgroundColor;
     ctx.strokeStyle = color;
     ctx.fillStyle = color;
+    console.log(event.target.style);
 }
 
 function rangeChange(event) {
@@ -110,3 +112,8 @@ if (mode) {
 if (saveBtn) {
     saveBtn.addEventListener('click', handleSaveClick);
 }
+
+colorPicker.on('color:change', function(color) {
+    ctx.strokeStyle = colorPicker.color.hexString;
+    ctx.fillStyle = colorPicker.color.hexString;
+});

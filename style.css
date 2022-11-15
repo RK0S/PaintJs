@@ -11,6 +11,7 @@ body {
 }
 
 .canvas {
+    cursor: pointer;
     width: 700px;
     height: 700px;
     background: white;
@@ -70,4 +71,12 @@ body {
 
 .controls__range input{
     cursor: pointer;
+}
+
+#picker {
+    position: absolute;
+    left: 100px;
+    cursor: pointer;
+    top: 50%;
+    transform: translateY(-50%);
 }
