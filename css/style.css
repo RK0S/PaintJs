@@ -1,0 +1,135 @@
+@import 'reboot.css';
+
+body {
+    background: #ffefd7;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+        Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+        sans-serif;
+}
+
+main {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+#backCanvas {
+    color: rgba(0, 0, 0, 0.3);
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.btn {
+    width: 170px;
+    padding: 7px 7px;
+    background: white;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.07);
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    color: rgba(0, 0, 0, 0.7);
+    font-weight: 800;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.return-actions {
+    display: flex;
+    margin-bottom: 10px;
+    justify-content: center;
+}
+
+.return-actions img {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+}
+
+.return-actions img:not(:last-child) {
+    margin-right: 5px;
+}
+
+.canvas {
+    cursor: pointer;
+    width: 800px;
+    height: 750px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.07);
+}
+
+.right {
+    margin: 0 auto;
+}
+
+#picker {
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.last-colors {
+    display: block;
+    display: flex;
+    margin-bottom: 20px;
+    padding: 0 12px;
+}
+
+.color {
+    width: 35px;
+    height: 35px;
+    box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.07);
+    border-radius: 36px;
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+
+.color:hover {
+    box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.2);
+}
+
+.color:not(:last-child) {
+    margin-right: 12px;
+}
+
+.find-color {
+    margin-bottom: 20px;
+}
+
+.find-color__input {
+    width: 70px;
+}
+
+.choosed-colors {
+    margin-bottom: 20px;
+    padding: 0 12px;
+}
+
+.choosed-colors__first-line {
+    display: flex;
+    margin-bottom: 12px;
+}
+
+.choosed-colors__second-line {
+    display: flex;
+}
+
+.current-brush__range {
+    cursor: pointer;
+}
+
+#current-color {
+    transition: all 0s;
+}
+
+/* .rounded {
+    position: absolute;
+    left: -15px;
+    top: -15px;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #000;
+    border-radius: 50%;
+    z-index: 1;
+} */
