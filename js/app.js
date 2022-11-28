@@ -14,6 +14,9 @@ const fillBg = document.getElementById('fill-bg');
 const getPixelBtn = document.getElementById('get-pixel');
 const backBtn = document.getElementById('backCanvas');
 const saveBtn = document.getElementById('save');
+const arrInputs = document.getElementsByName('color__post');
+const arrLi = document.getElementsByName('color__get');
+const arrGetInputs = document.getElementsByName('color__get__input');
 
 canvas.height = 750;
 canvas.width = 800;
@@ -186,19 +189,19 @@ function pick(event) {
 
     canvas.removeEventListener('click', pick);
 
-    function componentToHex(c) {
-        let hex = c.toString(16);
-        return hex.length == 1 ? "0" + hex : hex;
-    }
-      
-    function rgbToHex(r, g, b) {
-        return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
-    }
-
     let hex = rgbToHex(rgb[0], rgb[1], rgb[2]);
 
     ChangeCurrentColor(hex);
     replaceColors(hex);
+}
+
+function componentToHex(c) {
+    let hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+}
+  
+function rgbToHex(r, g, b) {
+    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
 }
 
 getPixelBtn.addEventListener('click', getPixel);
@@ -246,7 +249,6 @@ function forArrows() {
 
     if (backBtn.innerHTML == 'Отменить действие') {
         backBtn.innerText = 'Вернуть действие';
-        console.log(backBtn.innerHTMl);
     } else {
         backBtn.innerText= 'Отменить действие';
     }
@@ -259,4 +261,59 @@ saveBtn.addEventListener('click', function() {
     link.href = currentCanvas;
     link.download = 'PaintJS';
     link.click();
+});
+
+//Choosed colors
+
+let arrChoosedColors;
+
+if (localStorage.getItem('choosedColors') !== null) {
+    arrChoosedColors = JSON.parse(localStorage.getItem('choosedColors'));
+    changeChoosedColors();
+} else {
+    arrChoosedColors = [];
+}
+
+arrInputs.forEach(el => {
+    el.onclick = function() {
+        let color = el.parentElement.style.backgroundColor;
+        color = color.replace(/[^0-9 ]/g, '');
+        color = color.split(' ').map(Number);
+        if (color.length == 3) {
+            let hex = rgbToHex(color[0], color[1], color[2]);
+            if (arrChoosedColors.length < 8 && !arrChoosedColors.some((i) => i === hex)) {
+                arrChoosedColors.push(hex);
+                changeChoosedColors();
+            }
+        }
+    };
+});
+
+function changeChoosedColors () {
+    for (let a of arrLi) {
+        if (arrChoosedColors[a.id.replace(/[^0-9]/g, '')]) {
+            a.style.backgroundColor = arrChoosedColors[a.id.replace(/[^0-9]/g, '')];
+        } else {
+            a.style.backgroundColor = '';
+        }
+    }  
+    localStorage.setItem('choosedColors', JSON.stringify(arrChoosedColors));
+}
+
+arrGetInputs.forEach(el => {
+    el.onclick = function () {
+        let color = el.parentElement.style.backgroundColor;
+        color = color.replace(/[^0-9 ]/g, '');
+        color = color.split(' ').map(Number);
+        if (color.length == 3) {
+            let hex = rgbToHex(color[0], color[1], color[2]);
+
+            const index = arrChoosedColors.indexOf(hex);
+            if (index > -1) { 
+                arrChoosedColors.splice(index, 1); 
+            }
+            changeChoosedColors();
+            replaceColors(hex);
+        }
+    };
 });

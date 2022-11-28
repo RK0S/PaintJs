@@ -80,10 +80,10 @@ main {
     position: absolute;
     z-index: -1;
     opacity: 0;
-    top: -9px;
+    top: -5px;
     right: -1px;
     width: 16px;
-    height: 22px;
+    height: 16px;
 }
 
 .last-color {
@@ -92,23 +92,19 @@ main {
 
 label {
     position: absolute;
-    top: -9px;
+    top: -5px;
     right: -1px;
     width: 16px;
-    height: 22px;
+    height: 16px;
 }
 
-label:before {
-    content: '\2606';
-    font-size: 19px;
+label>img {
+    position: absolute;
+    width: 16px;
+    height: 16px;
     cursor: pointer;
 }
 
-.color__input:checked+label::before {
-    content: '\2605';
-    color: red;
-    cursor: pointer;
-}
 
 .color {
     width: 35px;
@@ -125,6 +121,10 @@ label:before {
 
 .color:not(:last-child) {
     margin-right: 12px;
+}
+
+li[name="color__get"] {
+    position: relative;
 }
 
 .find-color {
@@ -156,14 +156,3 @@ label:before {
 #current-color {
     transition: all 0s;
 }
-
-/* .rounded {
-    position: absolute;
-    left: -15px;
-    top: -15px;
-    width: 30px;
-    height: 30px;
-    border: 2px solid #000;
-    border-radius: 50%;
-    z-index: 1;
-} */
